@@ -1,0 +1,42 @@
+.user-container {
+    margin-top: 20px;
+}
+
+.user-container .sidebar {
+    width: 224px;
+    float: left;
+    background: #e8e8e8;
+    margin-right: 30px;
+    padding-left: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sidebar ul {
+    margin: 0;
+}
+
+.sidebar ul a,
+.sidebar ul a:hover,
+.sidebar ul a:visited {
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+
+.sidebar li {
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar li.active,
+.sidebar li:hover {
+    background-color: #f7f7f7;
+}
+
+.user-container .content {
+    float: left;
+}
+
+.user-container .content {
+    width: 940px;
+}

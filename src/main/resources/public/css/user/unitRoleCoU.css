@@ -1,0 +1,11 @@
+.permission-checkbox {
+    float: left;
+}
+
+.permission-checkbox input {
+    margin-left: 20px;
+}
+
+.panel label {
+    font-weight: normal;
+}

@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    line-height: 30px;
+    background-color: #333;
+    text-align: center;
+    color: #ccc;
+    width: 100%;
+}
+
+#header > #banner {
+    background-color: #333;
+    height: 40px;
+    line-height: 40px;
+}
+
+#content {
+    position: fixed;
+    top: 100px;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    background-color: #f7f7f7;
+}
+
+#content > div {
+    width: 1200px;
+    margin: auto;
+}
+
+#header > #sub-banner {
+    border-bottom: 1px solid #ccc;
+    margin: auto;
+    height: 60px;
+    line-height: 60px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+#banner > div,
+#sub-banner > div {
+    width: 1200px;
+    margin: auto;
+}
+
+.action-bar a {
+    color: #ccc;
+}
+
+.action-bar li.active a {
+    color: white;
+    font-weight: bold;
+}
+
+.action-bar .navbar-nav > li > a {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 40px;
+}
+
+.action-bar .nav > li > a:focus,
+.action-bar .nav > li > a:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.action-bar .nav > li > a.dropdown-toggle:focus,
+.action-bar .nav > li > a.dropdown-toggle:hover,
+.action-bar .nav .open > a,
+.action-bar .nav .open > a:focus,
+.action-bar .nav .open > a:hover {
+    background-color: rgb(153, 153, 153);
+}
+
+#banner .menu {
+    float: left;
+}
+
+.status > div {
+    color: white;
+    padding: 0 20px 0 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.status .label {
+    margin-right: 10px;
+    color: #eee;
+}
+
+.status > div:hover .desc,
+.status > div.active .desc {
+    color: #eee;
+}
+
+.status > .all > .label {
+    background-color: #7f6d21;
+}
+
+.status > .all > .desc {
+    color: #bb9326;
+}
+
+.status > .all:hover,
+.status > .all.active {
+    background-color: #7f6d21;
+}
+
+.status > .malfunction > .label {
+    background-color: #e46165;
+}
+
+.status > .malfunction > .desc {
+    color: #e46165;
+}
+
+.status > .malfunction:hover,
+.status > .malfunction.active {
+    background-color: #e46165;
+}
+
+.status > .recondition > .label {
+    background-color: rgb(58, 149, 190);
+}
+
+.status > .recondition:hover,
+.status > .recondition.active {
+    background-color: rgb(58, 149, 190);
+}
+
+.status > .recondition > .desc {
+    color: rgb(58, 151, 171);
+}
+
+.status > .online > .label {
+    background-color: rgb(55, 92, 87);
+}
+
+.status > .online:hover,
+.status > .online.active {
+    background-color: rgb(55, 92, 87);
+}
+
+.status > .online > .desc {
+    color: rgb(63, 160, 151);
+}
+
+.status > .offline > .label {
+    background-color: rgb(72, 62, 86);
+}
+
+.status > .offline:hover,
+.status > .offline.active {
+    background-color: rgb(72, 62, 86);
+}
+
+.status > .offline > .desc {
+    color: rgb(112, 84, 145);
+}
+
+#sub-banner .logo {
+    float: left;
+    position:fixed;
+}
+
+.menu > div {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+}
+
+.menu a {
+    color: #ccc;
+    font-weight: bold;
+    font-family: "Microsoft YaHei", serif;
+    font-size: 12px;
+}
+
+.menu .split {
+    width: 1px;
+    background-color: gray;
+    height: 20px;
+    position: relative;
+    top: 4px;
+}
+
+.menu a:hover,
+.menu a:focus,
+.menu a.active {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/*.menu a:hover .line,*/
+/*.menu a.active .line {*/
+/*position: absolute;*/
+/*width: 100%;*/
+/*border: 2px solid;*/
+/*bottom: 0;*/
+/*}*/
+
+/*表格搜索头*/
+.search-container .search-field {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.search-container .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.search-container .btn-search {
+    margin: 0 8px;
+}
+

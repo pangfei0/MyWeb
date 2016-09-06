@@ -1,0 +1,30 @@
+.particular-container {
+    padding: 20px 20px;
+}
+
+.elevator-status {
+    float: left;
+    width: 40px;
+    height: 140px;
+    text-align: center;
+    padding: 0px 2px;
+}
+
+.direction-area {
+    margin-top: 15px;
+
+}
+
+.floor-area {
+    padding: 3px 1px;
+    padding-top: 50px;
+}
+/*.elevator-box {*/
+    /*border-top: 6px solid white;*/
+    /*border-right: 6px solid white;*/
+/*}*/
+
+
+/*.up-area, .down-area {*/
+    /*height: 50%;*/
+/*}*/

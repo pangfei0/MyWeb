@@ -1,0 +1,12 @@
+.tool-container {
+    margin-bottom: 10px;
+}
+
+.edit-user {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete-user {
+    cursor: pointer;
+}

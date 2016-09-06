@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../image/background2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.panel-default {
+    opacity: 0.8;
+}

@@ -1,0 +1,42 @@
+.main {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+
+.main-sidebar {
+    width: 200px;
+    background-color: whitesmoke;
+    float: left;
+    position: relative;
+}
+
+.main-sidebar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+}
+
+.main-sidebar a{
+    display: block;
+    width: 200px;
+    height: 35px;
+}
+
+.main-sidebar a:hover {
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar-menu dd{
+    padding: 10px;
+    position: relative;
+}
+
+#locateMap{
+    margin-left: 30px;
+    margin-right: 50px;
+    width: 900px;
+    height: 650px;
+}
+

@@ -1,0 +1,21 @@
+
+.active {
+    color: #ebf492;
+}
+
+
+.box-header {
+    padding-bottom: 40px;
+}
+
+.box-header .btn {
+    width: 80px;
+    font-size: 14px;
+}
+
+.content {
+    float: left;
+    margin-left: 40px;
+    font-size: 13px;
+}
+

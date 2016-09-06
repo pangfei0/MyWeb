@@ -1,0 +1,14 @@
+table {
+    width: 300px;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+th {
+    font-size: medium;
+}
+
+
+tr {
+    height: 50px;
+}

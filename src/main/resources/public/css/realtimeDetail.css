@@ -1,0 +1,214 @@
+ul, ol {
+    list-style: none;
+}
+
+.pd-tb-20{
+    padding:20px 0px 10px 0px;
+}
+
+.item{
+    width: 40%;
+    float: left;
+}
+
+.left-container {
+    width: 470px;
+    padding: 20px 0px 20px 0px;
+    float: left;
+}
+
+.right-container {
+    width: 720px;
+    float: left;
+    padding-top:20px;
+}
+
+.elevator-big-box {
+    width: 454px;
+    height: 594px;
+    overflow: hidden;
+}
+
+.big-image-box {
+    background: url("../image/elevator-big.png") no-repeat 0 0;
+    position: relative;
+}
+
+.display-area {
+    position: absolute;
+    width: 231px;
+    height: 43px;
+    left: 112px;
+    top: 10px;
+    font-family: "Microsoft YaHei", "SimHei";
+    background: #000000;
+}
+
+.display-area .connecting {
+    position: absolute;
+    top: 1px;
+    font-size: 18px;
+    color: #F00;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.big-image-box .image {
+    background-reapet: no-repeat;
+    background-position: 0 0;
+    width: 321px;
+    height: 524px;
+    position: absolute;
+    top: 70px;
+    left: 67px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.req-item{
+    line-height: 30px;
+    margin: 5px 0;
+}
+
+.req-item .labelbox {
+    background-color: #64b12a;
+    color: #fff;
+    float: left;
+    width: 60px;
+    position: relative;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+}
+
+.req-item .sbox {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 28px;
+    width: 28px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.req-item .s {
+    display: block;
+    color: #777;
+    position: absolute;
+    border-width: 14px;
+    bottom: 0;
+    border-right-color: #fff;
+}
+
+.req-item .s-left{
+    border-style: dashed solid;
+    border-color: transparent #f7f7f7 transparent transparent;
+}
+
+.req-item .valuebox{
+    margin-left: 70px;
+    height: 28px;
+    overflow: hidden;
+}
+
+.item .form-label {
+    border-left: 3px solid #0081cc;
+    padding-left: 5px;
+    line-height: 20px;
+}
+
+.icons-item {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border: 1px solid #ddd;
+    float: left;
+    margin-left: -1px;
+    margin-top: -1px;
+    position: relative;
+}
+
+.icon-elev {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.icon-text {
+    color: #777;
+    display: block;
+}
+
+.icons-item-5217 .icon-elev {
+    background-image: url("/image/icon_elev_jianxu.png");
+}
+
+.icons-item-5218 .icon-elev {
+    background-image: url("/image/icon_elev_guzhang.png");
+}
+
+.icons-item-5219 .icon-elev {
+    background-image: url("/image/icon_elev_chaozai.png");
+}
+
+.icons-item-5220 .icon-elev {
+    background-image: url("/image/icon_elev_manzai.png");
+}
+
+.icons-item-5221 .icon-elev {
+    background-image: url("/image/icon_elev_xiaofang.png");
+}
+
+.icons-item-5222 .icon-elev {
+    background-image: url("/image/icon-elev-park.png");
+}
+
+.icons-item-5223 .icon-elev {
+    background-image: url("/image/icon_elev_menquwaitingti.png");
+}
+
+.icons-item-5225 .icon-elev {
+    background-image: url("/image/icon_elev_chuankoutongxin.png");
+}
+
+.icons-item-5226 .icon-elev {
+    background-image: url("/image/icon_elev_kongzhiqimima.png");
+}
+
+.elevator-container{
+    background-color: #fafafa;
+}
+
+.form-item {
+    padding: 0;
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 50%;
+    margin-right: 0;
+    float:left;
+    height:25px;
+    line-height: 25px;
+}
+
+.elevator-container .form-label {
+    float: left;
+    border-right: 1px solid #ddd;
+    width: 120px;
+    color: #666;
+    line-height: 23px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.elevator-container .form-element {
+    margin-left: 125px;
+    line-height: 23px;
+    float: none;
+    color: blue;
+}

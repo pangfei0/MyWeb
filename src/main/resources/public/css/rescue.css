@@ -1,0 +1,38 @@
+.left-list {
+    width: 220px;
+    float: left;
+    background: #e8e8e8;
+    margin-right: 2px;
+    margin-top: 20px;
+    padding-left: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.left-list ul{
+    list-style: none;
+    margin: 0;
+}
+
+.left-list li {
+    padding: 12px;
+}
+
+.left-list li.active,
+.left-list li:hover {
+    background-color: #f7f7f7;
+}
+
+.left-list table tr {
+    width: 100%;
+}
+.left-list table th {
+    width: 50%;
+}
+
+
+#map {
+    margin-top: 20px;
+    float: left;
+    width: 300px;
+}

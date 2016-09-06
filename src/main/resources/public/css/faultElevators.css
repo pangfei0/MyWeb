@@ -1,0 +1,46 @@
+#map {
+    margin-top: 20px;
+}
+
+#statusTab {
+    width: 250px;
+    float: left;
+    margin: 0px 2px;
+    padding: 5px 2px;
+    border: 1px ;
+}
+
+#statusTab li {
+    list-style: none;
+}
+
+.tab-content .list-cell {
+    margin: 12px 2px;
+    padding: 5px 5px;
+}
+
+.tab-content .left-index {
+    float: left;
+    width: 26px;
+    height: 90px;
+    padding: 2px 3px;
+}
+
+.tab-content template {
+    margin: 10px 2px;
+}
+
+.activeStyle {
+    background-color: #CCCCCC;
+}
+
+img{border:none;}
+#screenshot{
+    position:absolute;
+    border:1px solid #ccc;
+    background:#333;
+    padding:5px;
+    display:none;
+    color:#fff;
+}
+

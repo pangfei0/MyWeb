@@ -1,0 +1,73 @@
+#map {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+#map > svg {
+    margin-left: 250px;
+}
+
+#navigator {
+    color: #e46165;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#navigator a {
+    color: #e46165;
+    text-decoration: none;
+}
+
+#navigator .split {
+    margin: 0 10px;
+}
+
+.panel {
+    position: fixed;
+    bottom: 15px;
+    right: 0px;
+    height: 200px;
+    width: 300px;
+}
+
+#count {
+    width: 90px;
+    height: 50px;
+}
+
+
+#ele-list {
+    width: 250px;
+    float: left;
+    background: #e8e8e8;
+    margin-right: 2px;
+    margin-top: 20px;
+    padding-left: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#ele-list ul {
+    list-style: none;
+    margin: 0;
+}
+
+/*#ele-list li {*/
+    /*padding: 12px;*/
+/*}*/
+
+/*#ele-list li.active,*/
+/*#ele-list li:hover {*/
+    /*background-color: #f7f7f7;*/
+/*}*/
+
+/*#ele-list table tr {*/
+    /*width: 100%;*/
+/*}*/
+/*#ele-list table th {*/
+    /*width: 50%;*/
+/*}*/
+
