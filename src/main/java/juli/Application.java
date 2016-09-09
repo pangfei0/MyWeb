@@ -13,6 +13,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ *修改启动的端口号。
+ 实现EmbeddedServletContainerCustomizer接口，重写customize，设置端口号。
+ 启动项目的时候，直接启动这个类的main方法就可以了。
+ */
 @SpringBootApplication
 @EnableJpaRepositories
 @EnableScheduling

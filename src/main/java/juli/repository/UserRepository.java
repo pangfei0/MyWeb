@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserRepository extends PagingAndSortingRepository<User, String>, JpaSpecificationExecutor {
     User findByUserName(String userName);
     User findById(String id);
-
+    User findByOpenid(String openid);
     List<User> findByOrganization(Organization organization);
 
     @Query(value="select * from company where type=?1",nativeQuery = true)

@@ -64,6 +64,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
         shiroFilterFactoryBean.setLoginUrl("/login");
         shiroFilterFactoryBean.setSuccessUrl("/");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         //shiro filters
         Map<String, Filter> filters = new HashMap<>();
@@ -75,6 +76,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setFilters(filters);
 
         //设置URL认证过滤
+        filterChainDefinitionMap.put("/weixin/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/api/user/login", "anon");
         filterChainDefinitionMap.put("/lib/**", "anon");

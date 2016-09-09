@@ -142,6 +142,14 @@ public class User extends BaseEntity {
         this.roles = roles;
     }
 
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
     @Override
     public int hashCode() {
         return this.getId().length();
