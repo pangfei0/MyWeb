@@ -203,6 +203,12 @@ public class MaintenancePlanService {
     }
 
 
+    /**
+     * 添加维保计划
+     *
+     * @param maintenancePlanDto
+     * @return
+     */
     public APIResponse addMaintenancePlan(MaintenancePlanDto maintenancePlanDto){
         if(StringUtils.isNotEmpty(maintenancePlanDto.getNumber())&&StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){
             MaintenancePlan maintenancePlan = new MaintenancePlan();
@@ -219,7 +225,7 @@ public class MaintenancePlanService {
             }
             maintenancePlan.setPlanType(maintenancePlanDto.getPlanType());
             maintenancePlan.setStatus(10);
-            if(StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){
+            if(StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){//如果维保人员已经填写，这设置值维保人员//否者填写
                 MaintenancePersonnel maintenancePersonnel = maintenanceRepository.findOne(maintenancePlanDto.getMaintenanceManId());
                 if(null!=maintenancePersonnel){
                     maintenancePlan.setMaintenanceMan(maintenancePersonnel.getName());
@@ -236,23 +242,24 @@ public class MaintenancePlanService {
         if(StringUtils.isNotEmpty(id)){
              maintenancePlan =  maintenancePlanRepository.findOne(id);
         }
+        //如果维保计划不为空，并且 电梯编号不为空，斌企鹅维保人员不为空
         if(maintenancePlan!=null&&StringUtils.isNotEmpty(maintenancePlanDto.getNumber())&&StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){
-            Elevator elevator = elevatorRepository.findByNumber(maintenancePlanDto.getNumber());
-            maintenancePlan.setNumber(maintenancePlanDto.getNumber());
+            Elevator elevator = elevatorRepository.findByNumber(maintenancePlanDto.getNumber());//获取电梯信息
+            maintenancePlan.setNumber(maintenancePlanDto.getNumber());//重新设置维保计划的电梯
             if(null!=elevator){
-                maintenancePlan.setElevatorId(elevator.getId());
+                maintenancePlan.setElevatorId(elevator.getId());//设置电梯id
             }
             try {
-                maintenancePlan.setPlanTime(maintenancePlanDto.getPlanTime());
-                maintenancePlan.setPlanEndTime(maintenancePlanDto.getPlanEndTime());
+                maintenancePlan.setPlanTime(maintenancePlanDto.getPlanTime());//开始时间
+                maintenancePlan.setPlanEndTime(maintenancePlanDto.getPlanEndTime());//结束时间
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            maintenancePlan.setPlanType(maintenancePlanDto.getPlanType());
+            maintenancePlan.setPlanType(maintenancePlanDto.getPlanType());//计划类型
 //            maintenancePlan.setStatus(10);
-            if(StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){
+            if(StringUtils.isNotEmpty(maintenancePlanDto.getMaintenanceManId())){//如果跟新了维保人员
                 MaintenancePersonnel maintenancePersonnel = maintenanceRepository.findOne(maintenancePlanDto.getMaintenanceManId());
-                if(null!=maintenancePersonnel){
+                if(null!=maintenancePersonnel){//如果新的维保人员存在
                     maintenancePlan.setMaintenanceMan(maintenancePersonnel.getName());
                     //将还未执行的计划对应的维保人修改
                     List<MaintenancePlan> maintenancePlanList = maintenancePlanRepository.findByNumberAndStatus(maintenancePlanDto.getNumber(),10);

@@ -36,6 +36,19 @@ public class User extends BaseEntity {
     @Column
     private String isDemand;
 
+    /**
+     * 经度
+     */
+    @Column
+    private Double lng;
+
+    /**
+     * 纬度
+     */
+    @Column
+    private Double lat;
+
+
     //代表用户与微信端绑定的唯一标示openid
     @Column
     private String openid;
@@ -148,6 +161,22 @@ public class User extends BaseEntity {
 
     public void setOpenid(String openid) {
         this.openid = openid;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
     @Override

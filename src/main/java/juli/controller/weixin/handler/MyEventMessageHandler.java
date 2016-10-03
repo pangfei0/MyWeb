@@ -8,9 +8,13 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import juli.controller.weixin.common.CommonUtils;
+import juli.domain.Role;
 import juli.domain.Visitor;
+import juli.infrastructure.exception.JuliException;
+import juli.repository.RoleRepository;
 import juli.repository.UserRepository;
 import juli.repository.VisitorRepository;
+import juli.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,6 +45,10 @@ import suda.wxSDK.weixin.WeixinException;
 public class MyEventMessageHandler implements IEventMessageHandler{
     @Autowired
     private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+	@Autowired
+	private UserService userService;
 	private OutputMessage out;
 	public OutputMessage getOutputMessage(String text)
 	{
@@ -63,15 +71,24 @@ public class MyEventMessageHandler implements IEventMessageHandler{
 			else
 			{
 				vs= CommonUtils.changeToMyUser(user);
-				userRepository.save(vs);
+				List<Role> list=vs.getRoles();
+				Role role=roleRepository.findById("role-06bab60d-e3b0-4cb2-be06-df573eb00031");
+				if (role!=null)
+					System.out.println(role.getName());
+				list.add(role);
+				vs.setRoles(list);
+				userService.createUser(vs);
+				System.out.println(vs.getPassword());
 			}
 			
 		} catch (WeixinException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (JuliException e) {
+			e.printStackTrace();
 		}
-		    
-	     
+
+
 		return getOutputMessage("欢迎："+user.getNickname()+"关注我微信");
 	}
 
@@ -88,6 +105,7 @@ public class MyEventMessageHandler implements IEventMessageHandler{
 	@Override
 	public OutputMessage qrsceneSubscribe(QrsceneSubscribeEventMessage msg) {
 		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -100,6 +118,7 @@ public class MyEventMessageHandler implements IEventMessageHandler{
 	@Override
 	public OutputMessage location(LocationEventMessage msg) {
 		// TODO Auto-generated method stub
+		userService.updateUserLatAndlng(msg.getLatitude(),msg.getLongitude(),msg.getFromUserName());
 		return null;
 	}
 
@@ -112,6 +131,11 @@ public class MyEventMessageHandler implements IEventMessageHandler{
 	@Override
 	public OutputMessage view(ViewEventMessage msg) {
 		// TODO Auto-generated method stub
+//		try {
+//			userService.login(msg.getFromUserName(),msg.getFromUserName());
+//		} catch (JuliException e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 

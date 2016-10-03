@@ -1,5 +1,6 @@
 package juli.repository;
 
+import juli.domain.MaintenancePersonnel;
 import juli.domain.MaintenancePlan;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -27,5 +28,8 @@ public interface MaintenancePlanRepository extends PagingAndSortingRepository<Ma
 
     @Query(value="select m from MaintenancePlan m where m.planBathId= ?1")
     List<MaintenancePlan> findByBathId(String bathId);
+
+
+    List<MaintenancePlan>  findByElevatorIdAndPlanType(String elevatorId,Integer planType);
 }
 

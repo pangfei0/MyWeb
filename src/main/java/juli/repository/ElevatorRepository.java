@@ -185,4 +185,10 @@ public interface ElevatorRepository extends PagingAndSortingRepository<Elevator,
     List<String> findAddress(String address);
     @Query(value = "select distinct project_name from  elevator where elevator.project_name like ?1 order by project_name",nativeQuery = true)
     List<String> findProjectNames(String project_name);
+
+    /*
+     * 微信端电梯数据接口
+     */
+    @Query(value = "select elevator from Elevator elevator where abs(elevator.lng-?2)<1 and abs(elevator.lat-?1) <1")
+    Page<Elevator> findBylatlng(double lat,double lng,Pageable pageable);
 }

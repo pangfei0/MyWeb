@@ -37,6 +37,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
+@RequestMapping("weixin")
 public class OAuthController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
@@ -67,7 +68,11 @@ public class OAuthController {
 						List<Role> list=user.getRoles();
 						Role role=roleRepository.findById("role-06bab60d-e3b0-4cb2-be06-df573eb00031");
 						list.add(role);
+						user.setRoles(list);
 						userRepository.save(user);
+						SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));
+						HttpSession session=request.getSession();
+						session.setAttribute("userName",user.getNick());
 					}
 					else if (!userService.getPermissions(user).contains("user:login")) {
 						throw new JuliException("没有权限登录");
@@ -84,9 +89,9 @@ public class OAuthController {
 		}
 	   try {
 		   String state=request.getParameter("state");
-		   if(state.equals("STATE"))
+		   if(state.equals("elevator"))
 		   {
-			   RequestDispatcher rd= request.getRequestDispatcher("chat.html");
+			   RequestDispatcher rd= request.getRequestDispatcher("/weixin/achieve/elevators");
 			   rd.forward(request, response);
 		   }
            else if(state.equals("chatrecord"))

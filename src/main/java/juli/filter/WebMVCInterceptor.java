@@ -1,5 +1,6 @@
 package juli.filter;
 
+import juli.domain.User;
 import juli.domain.enums.ElevatorFaultStatus;
 import juli.domain.enums.ElevatorMaintennanceStatus;
 import juli.domain.enums.ElevatorStatus;
@@ -9,6 +10,7 @@ import juli.service.DataServer.DataServerSyncService;
 import juli.service.ElevatorService;
 import juli.service.MenuService;
 import juli.service.TranslationService;
+import juli.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.subject.Subject;
@@ -40,6 +42,9 @@ public class WebMVCInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     DataServerSyncService syncService;
 
+    @Autowired
+    UserService userService;
+
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         if (modelAndView == null || modelAndView.getViewName().startsWith("redirect:")) return;
 
@@ -63,7 +68,13 @@ public class WebMVCInterceptor extends HandlerInterceptorAdapter {
         } else {
             sid = syncService.login();
         }
+        User user=userService.getCurrentUser();
+        if(userService.getCurrentUser()!=null)
+        {
+            modelAndView.getModel().put("userid", user.getId());
+        }
         modelAndView.getModel().put("sid", sid);
+        modelAndView.getModel().put("openid","oimJLv93O-cPThWFBKj5qJRQ7dQQ");
         modelAndView.getModel().put("elevatorCountAll", elevatorService.getAllElevatorCount());
         modelAndView.getModel().put("elevatorCountOnline", elevatorService.getElevatorCount(ElevatorStatus.ONLINE));
         modelAndView.getModel().put("elevatorCountMalfunction", elevatorService.getElevatorCount(ElevatorFaultStatus.MALFUNCTION));

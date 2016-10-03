@@ -11,7 +11,7 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
     var showFav = false;//默认不显示关注
     var sid = null;
     var dataParsing = new DataParsing();
-    var selectedItem=null;
+    var selectedItem = null;
     var numberToId = {};
     var obj = new Object();
 
@@ -20,7 +20,7 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
         var item = new Object();
         item.elevStatus = type;
         item.pageIndex = 1;
-        ajax.post("/api/dataserver/getStatusElevators", item, function (res){
+        ajax.post("/api/dataserver/getStatusElevators", item, function (res) {
             parseElevatorData(res, false, 1, true);
         })
     }
@@ -28,16 +28,16 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
     function init() {
         $(".menu-realtime-monitoring").addClass("active");
         isFav = $('#isFav').val();
-        selectedItem=$("#selectedItem").val();
+        selectedItem = $("#selectedItem").val();
         sid = $('#sid').val();
         if (isFav != '' && isFav == 1) {
             showFav = true;
         }
-        if(selectedItem==0){
+        if (selectedItem == 0) {
             $('.sb-0').removeClass("active");
             $('.sb-1').removeClass("active");
             $('.sb-0').addClass("active");
-        }else{
+        } else {
             $('.sb-0').removeClass("active");
             $('.sb-1').removeClass("active");
             $('.sb-1').addClass("active");
@@ -49,17 +49,17 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
         elevatorTypeAhead();
     }
 
-    function dealWithItemClicked(){
+    function dealWithItemClicked() {
         //sbIcon视图或列表
-        $('.sbIcon').on("click",function(e){
+        $('.sbIcon').on("click", function (e) {
             $('.sb-0').removeClass("active");
             $('.sb-1').removeClass("active");
             $(this).addClass("active");
-            if($(this).attr("data-val")==0){
+            if ($(this).attr("data-val") == 0) {
                 $('.bootstrap-table').hide();
                 $('.elevator-content').show();
                 $("#selectedItem").val(0);
-            }else{
+            } else {
                 $('.bootstrap-table').show();//列表形式显示
                 $('.elevator-content').hide();//
                 $("#selectedItem").val(1);
@@ -78,8 +78,8 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
             obj.favorite = 1;
         }
         $.post("/api/elevator/new/search/page", obj, function (res) {
-        //默认显示用户关注的电梯,逻辑上有点问题，首页应该显示所有电梯，通过小图标显示关注的电梯
-       // $.post("/api/elevator/favorites", obj, function (res) {
+            //默认显示用户关注的电梯,逻辑上有点问题，首页应该显示所有电梯，通过小图标显示关注的电梯
+            // $.post("/api/elevator/favorites", obj, function (res) {
             parseElevatorData(res, refresh, pageNumber, firstLoad);
         });
     }
@@ -91,14 +91,14 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
             var totalPages = res.data.totalPages;
             var totalRecords = res.data.totalElements;
             var eContent = '';
-            var tContent='';
+            var tContent = '';
             $.each(res.data.content, function (index, data) {
                 var floor = data.floor;
                 var number = data.number;
                 var iCode = (data.intelHardwareNumber == null ? "" : data.intelHardwareNumber.trim());
                 var doorOpen = data.doorOpen;
                 var maintenanceStatus = data.maintenanceStatus;
-                var faultStatus=data.faultStatus;
+                var faultStatus = data.faultStatus;
                 //var maintenanceStatus = data.maintenanceStatus == 20 ? "recondition.png" : "";
                 //var faultStatus = data.faultStatus == 20 ? "malfunction.png" : "";
                 var isHandled = data.isHandled;
@@ -129,19 +129,19 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
                     '</div><div class="down-area"><div class="floor-ind" regCode="' + iCode + '">' + (floor == null ? '1' : floor) + '</div>' +
                     '<img class="direction-arrow" src="/image/trans-bg.png" regCode="' + iCode + '"/>' +
                     '</div></div></div><div class="elevator-des"><p class="p-num">' + number + '</p><p class="p-addr">' + address + '</p>' +
-                   // '<div class="elevator-fav"><a class="fav-common ' + (favorite == 1 ? "fav-img-st" : "fav-img f-hidden") + '" data-fav="' + favorite + '" data-id="' + id + '">' +
+                        // '<div class="elevator-fav"><a class="fav-common ' + (favorite == 1 ? "fav-img-st" : "fav-img f-hidden") + '" data-fav="' + favorite + '" data-id="' + id + '">' +
                     '<div class="elevator-fav"><a class="fav-common ' + (favorite == 1 ? "fav-img" : "fav-img-st") + '" data-fav="' + favorite + '" data-id="' + id + '">' +
                     '</a></div></div></div>';
-                var tval='<tr regCode="' + iCode + '">'+
-                    '<td>'+(index+1)+'</td>'+
-                    '<td style="cursor:pointer" data="'+id+'">'+formatData(data.number)+'</td>'+
-                    '<td style="cursor:pointer" data="'+id+'">'+formatData(data.alias)+'</td>'+
-                    '<td>'+formatData()+'</td>'+
-                    '<td>'+formatData(data.status == 10 ? "在线":"离线")+'</td>'+
-                    '<td>'+formatData(data.faultStatus == 20 ? "故障":"正常")+'</td>'+
-                    '<td>'+formatData(data.maintenanceStatus == 20 ? "检修":"正常")+'</td>'+
-                    '<td floor-regCode="' + iCode + '">'+formatData(floor)+'</td>'+
-                    '<td direction-regCode="' + iCode + '">'+ '<img class="direction-img" src="/image/trans-bg.png" direction-regCode="' + iCode + '"/>' +'</td></tr>';
+                var tval = '<tr regCode="' + iCode + '">' +
+                    '<td>' + (index + 1) + '</td>' +
+                    '<td style="cursor:pointer" data="' + id + '">' + formatData(data.number) + '</td>' +
+                    '<td style="cursor:pointer" data="' + id + '">' + formatData(data.alias) + '</td>' +
+                    '<td>' + formatData() + '</td>' +
+                    '<td>' + formatData(data.status == 10 ? "在线" : "离线") + '</td>' +
+                    '<td>' + formatData(data.faultStatus == 20 ? "故障" : "正常") + '</td>' +
+                    '<td>' + formatData(data.maintenanceStatus == 20 ? "检修" : "正常") + '</td>' +
+                    '<td floor-regCode="' + iCode + '">' + formatData(floor) + '</td>' +
+                    '<td direction-regCode="' + iCode + '">' + '<img class="direction-img" src="/image/trans-bg.png" direction-regCode="' + iCode + '"/>' + '</td></tr>';
                 eContent += content;
                 tContent += tval;
                 if (index % 5 == 4) {
@@ -168,12 +168,12 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
 
     //加载省份
     function loadProvince() {
-       /* $('#province').html('<option selected value="-1">'+${t("province")}+'</option>');
-        $('#city').html('<option selected value="-1">'+${t("city")}+'</option>');
-        $('#region').html('<option selected value="-1">'+${t("region")}+'</option>');
-        $('#province').html('<option selected value="-1">'+$(t("province"))+'</option>');
-        $('#city').html('<option selected value="-1">'+$(t("city"))+'</option>');
-        $('#region').html('<option selected value="-1">'+$(t("region)"))+'</option>');*/
+        /* $('#province').html('<option selected value="-1">'+${t("province")}+'</option>');
+         $('#city').html('<option selected value="-1">'+${t("city")}+'</option>');
+         $('#region').html('<option selected value="-1">'+${t("region")}+'</option>');
+         $('#province').html('<option selected value="-1">'+$(t("province"))+'</option>');
+         $('#city').html('<option selected value="-1">'+$(t("city"))+'</option>');
+         $('#region').html('<option selected value="-1">'+$(t("region)"))+'</option>');*/
         $.post("/api/area/province", {}, function (res) {
             if (res.success) {
                 $.each(res.data, function (index, data) {
@@ -268,7 +268,7 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
             var provinceId = $('#province').val().trim();//省
             var cityId = $('#city').val().trim();//市
             var regionId = $('#region').val().trim();//县
-            if (contractNo == '' &&  brand == '' && eType ==''
+            if (contractNo == '' && brand == '' && eType == ''
                 && registrationCode == '' && iRegistrationCode == ''
                 && alias == '' && provinceId == -1) {
                 loadData(1, true, false);
@@ -320,12 +320,12 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
     //typeahead处理
     function elevatorTypeAhead() {
         $("#contractNo").typeahead({
-            source: function(query, process) {
+            source: function (query, process) {
                 var parameter = {number: query};
                 ajax.post("/api/elevator/elevatorDto/typeahead", parameter, function (res) {
-                    if(res.success){
+                    if (res.success) {
                         var array = [];
-                        $.each(res.data,function(index, ele){
+                        $.each(res.data, function (index, ele) {
                             numberToId[ele.number] = ele.id;
                             array.push(ele.number);
                         });
@@ -366,15 +366,15 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
         });
 
         /*取消通过具体地址链接到详情，因为布局原因导致关注功能实现有点小问题
-        $('.elevator-des').on('click', function (e) {
-            e.preventDefault();
-            window.location.href = "/realtime/detail/" + $(this).attr("data");
-        });*/
+         $('.elevator-des').on('click', function (e) {
+         e.preventDefault();
+         window.location.href = "/realtime/detail/" + $(this).attr("data");
+         });*/
 
         //列表显示时通过设备号或楼盘链接到详情页面
-        $('#v-table td').on('click',function(e){
-                e.preventDefault();
-                window.location.href = "/realtime/detail/" + $(this).attr("data");
+        $('#v-table td').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = "/realtime/detail/" + $(this).attr("data");
         });
 
 
@@ -595,7 +595,7 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
                         return;
                     }
                     $(this).attr("dataStatus", '00');
-                    if($(this).attr("src").indexOf("closing")<0) {
+                    if ($(this).attr("src").indexOf("closing") < 0) {
                         $(this).attr("src", "");
                         $(this).attr("src", "/image/elevator_closing.gif?timestamp=" + timestamp);
                     }
@@ -606,7 +606,7 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
                         return;
                     }
                     $(this).attr("dataStatus", '11');
-                    if($(this).attr("src").indexOf("opening")<0){
+                    if ($(this).attr("src").indexOf("opening") < 0) {
                         $(this).attr("src", "");
                         $(this).attr("src", "/image/elevator_opening.gif?timestamp=" + timestamp);
                     }
@@ -899,10 +899,10 @@ define(["jquery", "ajax", "toastr", "kkpager", "translator", "DataParsing", "typ
         return data.deviceSerial + data.tdSerial + (data.type ? data.type : type);
     }
 
-    function formatData(data){
-        if(data==null){
+    function formatData(data) {
+        if (data == null) {
             return "";
-        }else{
+        } else {
             return data;
         }
     }

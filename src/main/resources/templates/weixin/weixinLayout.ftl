@@ -9,6 +9,7 @@
     <title>${title}</title>
 <#--<link rel="shortcut icon" href="/image/logo.ico">-->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/css/weixin/weui.css">
     <link rel="stylesheet" href="/css/weixin/weui.min.css">
     <script type="text/javascript">
         var require = {
@@ -101,14 +102,14 @@ ${header}
 </head>
 <body>
 <input type="hidden" id="sid" value="${sid}"/>
-
+<input type="hidden" id="userid" v-model="userid" value="${userid}">
 <div id="content">
     <div>
         <#nested />
     </div>
 </div>
 <div id="footer">
-    @2016 ${t("juliElevator")}
+    @2016 苏州大学
 </div>
 
 ${footer}

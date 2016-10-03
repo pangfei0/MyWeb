@@ -1,5 +1,5 @@
-<#import "weixinLayout.ftl" as layout />
-<#include '../func.ftl'>
+<#import "../weixinLayout.ftl" as layout />
+<#include '../../func.ftl'>
 
 <#assign headerContent>
 </#assign>

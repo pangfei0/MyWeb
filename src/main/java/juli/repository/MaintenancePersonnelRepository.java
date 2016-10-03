@@ -35,5 +35,6 @@ public interface MaintenancePersonnelRepository  extends PagingAndSortingReposit
     @Query(value = "select mp.name from maintenance_personnel mp where mp.id= ?1",nativeQuery = true)
     String findName(String id);
     @Query(value = "select mp from maintenance_personnel mp where mp.maintainer_id= ?1",nativeQuery = true)
-    List<MaintenancePersonnel>  findByCompanyId(String companyId);
+
+    List<MaintenancePersonnel>  findByCompanyIdAndPlanType(String companyId,Integer planType);
 }

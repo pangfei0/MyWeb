@@ -10,7 +10,6 @@
 <#assign footerContent>
 
 </#assign>
-
 <@layout.maintainTemplate initScript="js/maintenancePersonnelInfo" header=headerContent footer=footerContent title='${t("serviceManagement")}'>
 <div id="infoDetail">
 <div class="panel panel-default" >

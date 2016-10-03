@@ -719,38 +719,38 @@ public class UpkeepContractAPIController extends APIController<UpkeepContract, U
     @RequestMapping(value = "/bathElevatorAdd/{id}",method = RequestMethod.POST)
     public APIResponse bathElevator(@ApiParam("合同的id")@PathVariable("id") String id, @ApiParam("批次参数")ElevatorBathpojo pojo) throws Exception {
         UpkeepContract upkeepContract = upkeepContractRepository.findOne(id);
-        String elevatorStr2 = "";
-        String elevatorStrSet = "";
+        String elevatorStr2 = "";//电梯id 组合
+        String elevatorStrSet = "";//电梯编号组合
         MaintenancePersonnel maintenancePersonnel = null;
         if(null!=pojo && StringUtils.isNotEmpty(pojo.getElevatorStr())){
-             elevatorStr2 = pojo.getElevatorStr().substring(0, pojo.getElevatorStr().lastIndexOf(","));
+             elevatorStr2 = pojo.getElevatorStr().substring(0, pojo.getElevatorStr().lastIndexOf(","));//获取电梯数组字符串
         }
         if(null!=pojo && StringUtils.isNotEmpty(pojo.getMaintenanceManId())){
-            maintenancePersonnel = maintenanceRepository.findOne(pojo.getMaintenanceManId());
+            maintenancePersonnel = maintenanceRepository.findOne(pojo.getMaintenanceManId());//获取维保人员
         }
         //保存维保计划批次
         MaintenancePlanBath maintenancePlanBath = new MaintenancePlanBath();
         if(null!=upkeepContract){
-            maintenancePlanBath.setUpkeepContractId(upkeepContract.getId());
-            maintenancePlanBath.setUpkeepContractNumber(upkeepContract.getNumber());
+            maintenancePlanBath.setUpkeepContractId(upkeepContract.getId());//设置批次的合id
+            maintenancePlanBath.setUpkeepContractNumber(upkeepContract.getNumber());//设置合同的number
         }
         if(StringUtils.isNotEmpty(elevatorStrSet)){
             elevatorStrSet = elevatorStrSet.substring(0,elevatorStrSet.lastIndexOf(","));
             maintenancePlanBath.setElevatorNumber(elevatorStrSet);
         }
         if(null!=maintenancePersonnel){
-            maintenancePlanBath.setMaintenanceMan(maintenancePersonnel.getName());
-            maintenancePlanBath.setMaintenanceManId(maintenancePersonnel.getId());
+            maintenancePlanBath.setMaintenanceMan(maintenancePersonnel.getName());//设置维保人员的名字
+            maintenancePlanBath.setMaintenanceManId(maintenancePersonnel.getId());//设置维保人员的id
         }
         if(StringUtils.isNotEmpty(pojo.getStartTime())&&null!=pojo.getDays()){
-            maintenancePlanBath.setStartTime(DateUtil.stringToFullDateformat(pojo.getStartTime()));
-            maintenancePlanBath.setEndTime(DateUtil.toSomeDay(pojo.getStartTime(), pojo.getDays()-1));
+            maintenancePlanBath.setStartTime(DateUtil.stringToFullDateformat(pojo.getStartTime()));//设置开始时间
+            maintenancePlanBath.setEndTime(DateUtil.toSomeDay(pojo.getStartTime(), pojo.getDays()-1));//设置结束时间
         }
         maintenancePlanBathRepository.save(maintenancePlanBath);
         MaintenancePlanBath  maintenancePlanBath1=maintenancePlanBathRepository.findById(maintenancePlanBath.getId());
         String planBathId=maintenancePlanBath1.getId();
         if(StringUtils.isNotEmpty(elevatorStr2)){
-            String [] a = elevatorStr2.split(",");
+            String [] a = elevatorStr2.split(",");//
             for(int i=0;i<a.length;i++){
                 Elevator elevator = elevatorRepository.findOne(a[i]);
                 if(null!=elevator){

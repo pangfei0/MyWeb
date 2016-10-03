@@ -131,6 +131,14 @@ public class UserService {
             if (getEncryptedPassword(userName, password).equals(user.getPassword())) {
                 return true;
             }
+            else
+            {
+                if(user.getOpenid()!=null&&user.getInUse().equals("1"))
+                {
+                    System.out.println("success");
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -194,11 +202,29 @@ public class UserService {
     public User getCurrentUser() throws JuliException {
         try {
             User loginUser = (User) SecurityUtils.getSubject().getPrincipal();
+            if(loginUser==null)
+                return null;
+            else
             loginUser = userRepository.findOne(loginUser.getId());
 
             return loginUser;
         } catch (AuthenticationException e) {
             throw new JuliException("获取当前用户失败");
         }
+    }
+    /*微信端*/
+
+    /**
+     * 跟新微信端用户经纬度
+     * @param lat
+     * @param lng
+     * @param openid
+     */
+    public void updateUserLatAndlng(double lat,double lng,String openid)
+    {
+        User user=userRepository.findByOpenid(openid);
+        user.setLat(lat);
+        user.setLng(lng);
+        userRepository.save(user);
     }
 }
